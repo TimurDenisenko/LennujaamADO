@@ -1,9 +1,12 @@
-﻿<%@ Page Title="Lisa uus lennu" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="Lennujaam.Contact" %>
+﻿<%@ Page Title="Lisa uus lend" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="Lennujaam.Contact" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main aria-labelledby="title">
         <h2 id="title"><%: Title %></h2>
-        <asp:DetailsView ID="DetailsView1" runat="server" Height="50px" Width="125px" AutoGenerateRows="False" DataKeyNames="lendId" DataSourceID="SqlDataSource_lennu" DefaultMode="Insert">
+        <asp:DetailsView ID="DetailsView1" runat="server" Height="50px" Width="125px" AutoGenerateRows="False" DataKeyNames="lendId" DataSourceID="SqlDataSource_lennu" DefaultMode="Insert" CellPadding="10" CellSpacing="4" ForeColor="#333333" GridLines="None">
+            <AlternatingRowStyle BackColor="White" />
+            <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
+            <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" />
             <Fields>
                 <asp:BoundField DataField="lennu_nr" HeaderText="lennu_nr" SortExpression="lennu_nr" />
                 <asp:TemplateField HeaderText="kohtade_arv" SortExpression="kohtade_arv">
@@ -11,7 +14,7 @@
                         <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("kohtade_arv") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <InsertItemTemplate>
-                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("kohtade_arv", "{0}") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("kohtade_arv", "{0}") %>' TextMode="Number"></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label3" runat="server" Text='<%# Bind("kohtade_arv") %>'></asp:Label>
@@ -22,7 +25,7 @@
                         <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("reisijate_arv") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <InsertItemTemplate>
-                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("reisijate_arv", "{0}") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("reisijate_arv", "{0}") %>' TextMode="Number"></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label4" runat="server" Text='<%# Bind("reisijate_arv") %>'></asp:Label>
@@ -35,7 +38,7 @@
                         <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("kestvus") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <InsertItemTemplate>
-                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("kestvus", "{0:N}") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("kestvus", "{0:N}") %>' TextMode="Number"></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label5" runat="server" Text='<%# Bind("kestvus") %>'></asp:Label>
@@ -64,8 +67,12 @@
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:BoundField DataField="lendId" HeaderText="lendId" InsertVisible="False" ReadOnly="True" SortExpression="lendId" />
-                <asp:CommandField ShowInsertButton="True" />
+                <asp:CommandField ShowInsertButton="True" CancelText="Tühista" InsertText="Lisa" />
             </Fields>
+            <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+            <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
 </asp:DetailsView>
     <asp:SqlDataSource ID="SqlDataSource_lennu" runat="server" ConnectionString="<%$ ConnectionStrings:mudel_lennujaamConnectionString1 %>" DeleteCommand="DELETE FROM [LendSet1] WHERE [lendId] = @lendId" InsertCommand="INSERT INTO [LendSet1] ([lennu_nr], [kohtade_arv], [reisijate_arv], [ots], [siht], [kestvus], [valjumisaeg], [lopetatud]) VALUES (@lennu_nr, @kohtade_arv, @reisijate_arv, @ots, @siht, @kestvus, @valjumisaeg, @lopetatud)" SelectCommand="SELECT [lennu_nr], [kohtade_arv], [reisijate_arv], [ots], [siht], [kestvus], [valjumisaeg], [lopetatud], [lendId] FROM [LendSet1]" UpdateCommand="UPDATE [LendSet1] SET [lennu_nr] = @lennu_nr, [kohtade_arv] = @kohtade_arv, [reisijate_arv] = @reisijate_arv, [ots] = @ots, [siht] = @siht, [kestvus] = @kestvus, [valjumisaeg] = @valjumisaeg, [lopetatud] = @lopetatud WHERE [lendId] = @lendId">
         <DeleteParameters>

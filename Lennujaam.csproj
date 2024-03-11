@@ -132,6 +132,8 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Kasutajad.aspx" />
+    <Content Include="LisaKasutaja.aspx" />
     <Content Include="mudel_lennujaam.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>mudel_lennujaam.Context.cs</LastGenOutput>
@@ -237,6 +239,20 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Kasutajad.aspx.cs">
+      <DependentUpon>Kasutajad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Kasutajad.aspx.designer.cs">
+      <DependentUpon>Kasutajad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LisaKasutaja.aspx.cs">
+      <DependentUpon>LisaKasutaja.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LisaKasutaja.aspx.designer.cs">
+      <DependentUpon>LisaKasutaja.aspx</DependentUpon>
     </Compile>
     <Compile Include="mudel_lennujaam.Context.cs">
       <AutoGen>True</AutoGen>
